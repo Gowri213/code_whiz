@@ -23,8 +23,8 @@ for price in prices:
     total += price
 
 print(f"Total amount: {total}")
-discount = int(input("Enter discount: "))
-
-print(f"Discount: {discount}")
-total = total - discount
-print(f"Final amount: {total}")
+discount_amount = int(input("Enter discount: "))
+discount=total*(discount_amount/100)
+final_total=total-discount
+print(f"Discount: {discount}%")
+print(f"Final amount: {final_total}")
