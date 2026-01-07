@@ -1,24 +1,23 @@
-expenses = []
-ls = []
+expenses = {}
 total = 0
+
 while True:
     category = input("Enter the category(Food, travel, etc): ").lower()
     if category == "q":
         break
     expense = int(input("Enter the expense: "))
     
-    ls.append(category)
-
-    expenses.append(expense)
-
-for thing in ls:
-    print(thing)
-for expense in expenses:
-    print(expense)
-
-for expense in expenses:
+    if category in expenses:
+        expenses[category] += expense
+    else:
+        expenses[category] = expense
+    
     total += expense
 
 print(f"Total expenditure: {total}")
-print("Highest spending category: ")
-print(max(expenses))
+
+if expenses:
+    max_key = max(expenses, key=expenses.get)
+    print(f"Highest spending category: {max_key} with value {expenses[max_key]}")
+else:
+    print("No expenses added.")
